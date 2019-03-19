@@ -71,38 +71,40 @@ function removeReceipients()
 {
 	$(".rmv").on("click", function()
 	{
-		//alert("hello");
 		$(this).parent().parent().remove();
 		appendItem();
+		makeFirstFocusable();
 	});
 }
 function removeReceipientsOnKey()
 {
 	$(".rmv").keydown(function(e)
 	{
-		if(e.keyCode==13)
+		if(e.keyCode == 13)
 		{
 			$(this).parent().parent().remove();
 			appendItem();
+			makeFirstFocusable();
 		}
-	})
+	});
 }
 
 $(document).ready(function()
 {
 	appendItem();
+	gridNavigation();
+	//selects the item from nux list
 	$(".user_name").click(function()
 	{
 		var linkText = $(this).text();
 		$(".txt").val(linkText);
 	});
-});
+	//closing nux list
 
-$(document).ready(function()
-{
 	$(".btn_close").click(function()
 	{
 		$(".hidden").css("display","none");
 	});
 });
+
 

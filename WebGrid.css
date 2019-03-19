@@ -78,6 +78,7 @@ input[type="text"]:focus, #btn_add:focus{
 }
 .rmv{
 	padding-left:5px;
+	cursor:pointer;
 }
 .nux_rec_list
 {

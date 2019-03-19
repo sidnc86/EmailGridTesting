@@ -83,3 +83,12 @@ function addToLastPos()
         }
 		$(".hidden").css("display","block");
 }
+
+function makeFirstFocusable()
+{
+    var attr = $(".itemlist").children(".item").eq(0).children(".gc").eq(0).attr("tabindex");
+    if(attr == -1)
+    {
+        $(".itemlist").children(".item").eq(0).children(".gc").eq(0).attr("tabindex","0");
+    }
+}
