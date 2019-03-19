@@ -5,8 +5,8 @@ function gridNavigation()
 		$(".gc").keydown(function(e)
 		{
 			var tr,td,cell;
-			td=$("td").length;
-			tr=$("tr").length;
+			td=$(".gc").length;
+			tr=$(".item").length;
 			cell=td/(tr-1);//one tr have that much of td
 			//alert(cell);
 			switch(e.keyCode)
@@ -82,14 +82,14 @@ $(document).ready(function()
 			++id;
 			var idBtn=txt_recp+""+id;
 			$(".itemlist").append("<div role='row' class='item'>"+
-									"<span role='gridcell' class='gc' tabindex='-1'>"+
+									"<span role='gridcell' class='gc' tabindex='0'>"+
 										"<a id='"+txt_recp+"' class='item_name' aria-label='"+txt_recp+"' tabindex='-1' href='#'>"+txt_recp+"</a>"+
 									"</span>"+
 									"<span role='gridcell' class='gc' tabindex='-1'>"+
-										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"'>x</span>"+
+										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"  "+txt_recp+"' onclick='removeReceipients();'>x</span>"+
 									"</span>"+ 
 								"</div>");
-								$("#form-action-text").text(txt_recp);
+			$("#form-action-text").text(txt_recp);
 			gridNavigation();
 			//removeReceipents();
 			$(".txt").val("").focus();
@@ -116,11 +116,11 @@ $(document).ready(function()
 			++id;
 			var idBtn=txt_recp+""+id;
 			$(".itemlist").append("<div role='row' class='item'>"+
-									"<span role='gridcell' class='gc' tabindex='-1'>"+
+									"<span role='gridcell' class='gc' tabindex='0'>"+
 										"<a id='"+txt_recp+"' class='item_name' aria-label='"+txt_recp+"' tabindex='-1' href='#'>"+txt_recp+"</a>"+
 									"</span>"+
 									"<span role='gridcell' class='gc' tabindex='-1'>"+
-										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"''"+txt_recp+"'>x</span>"+
+										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"  "+txt_recp+"' onclick='removeReceipients();'>x</span>"+
 									"</span>"+ 
 								"</div>");
 								$("#form-action-text").text(txt_recp);
@@ -133,10 +133,14 @@ $(document).ready(function()
 	});
 });
 
-$(".rmv").click(function()
+function removeReceipients()
 {
-	alert("Hello");
-});
+	$(".rmv").on("click", function()
+	{
+		//alert("hello");
+		$(this).parent().parent().remove();
+	});
+}
 
 function txtDownKeyPressed()
 {
