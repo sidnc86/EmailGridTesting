@@ -67,96 +67,30 @@ function gridNavigation()
 	});
 }
 
-$(document).ready(function()
-{	
-	//gridNavigation();
-	var id=0;
-	$('#btn_add').click(function()	
-	{
-		var txt_recp= $(".txt").val();
-		if(txt_recp=="")
-		{
-					
-		}			
-		else
-		{
-			++id;
-			var idBtn=txt_recp+""+id;
-			$(".itemlist").append("<div role='row' class='item'>"+
-									"<span role='gridcell' class='gc' tabindex='0'>"+
-										"<a id='"+txt_recp+"' class='item_name' aria-label='"+txt_recp+"' tabindex='-1' href='#'>"+txt_recp+"</a>"+
-									"</span>"+
-									"<span role='gridcell' class='gc' tabindex='-1'>"+
-										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"  "+txt_recp+"' onclick='removeReceipients();'>x</span>"+
-									"</span>"+ 
-								"</div>");
-			$("#form-action-text").text(txt_recp);
-			gridNavigation();
-			//removeReceipents();
-			$(".txt").val("").focus();
-		}				
-	});
-});
-
-
-
-$(document).ready(function()
-{
-	
-	var id=0;
-	$(".txt").keydown(function(e)
-	{
-		gridNavigation();
-		if($(".txt").val()=="")
-		{
-			
-		}
-		else if(e.keyCode==13)
-		{
-			var txt_recp= $(".txt").val();
-			++id;
-			var idBtn=txt_recp+""+id;
-			$(".itemlist").append("<div role='row' class='item'>"+
-									"<span role='gridcell' class='gc' tabindex='0'>"+
-										"<a id='"+txt_recp+"' class='item_name' aria-label='"+txt_recp+"' tabindex='-1' href='#'>"+txt_recp+"</a>"+
-									"</span>"+
-									"<span role='gridcell' class='gc' tabindex='-1'>"+
-										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"  "+txt_recp+"' onclick='removeReceipients();'>x</span>"+
-									"</span>"+ 
-								"</div>");
-								$("#form-action-text").text(txt_recp);
-			gridNavigation();
-			//removeReceipents();
-			$(".txt").val("").focus();
-		}
-		else
-			$(".hidden").css("display","block");
-	});
-});
-
 function removeReceipients()
 {
 	$(".rmv").on("click", function()
 	{
 		//alert("hello");
 		$(this).parent().parent().remove();
+		appendItem();
 	});
 }
-
-function txtDownKeyPressed()
+function removeReceipientsOnKey()
 {
-	$(".txt").keydown(function(e)
+	$(".rmv").keydown(function(e)
 	{
-		if(e.keyCode==40)
+		if(e.keyCode==13)
 		{
-			$(".nux_recp_list").find("#one").children().focus();
+			$(this).parent().parent().remove();
+			appendItem();
 		}
-		else{}
-	});
+	})
 }
 
 $(document).ready(function()
 {
+	appendItem();
 	$(".user_name").click(function()
 	{
 		var linkText = $(this).text();

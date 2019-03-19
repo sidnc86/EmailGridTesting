@@ -4,6 +4,7 @@
 		<link rel="stylesheet" href="../EmailGridTesting/WebGrid.css" type="text/css">
 		<script src="../EmailGridTesting/jquery-3.3.1-min.js"></script>
 		<script src="../EmailGridTesting/WebGrid.js"></script>
+		<script src="../EmailGridTesting/EmailGridFixes.js"></script>
 	</head>
 	<body>
 		<header id="header">
@@ -11,7 +12,7 @@
 			<p id="description" style="display: none">Type Text and press enter to add your receipients</p>
 		</header>
 		<main>
-			<div class="send_to_box" tabindex="0" role="application">
+			<div class="send_to_box">
 				<span id="sendto_lbl" style="color:white;">Send To:</span>
 				
 				<div aria-labelledby="header" aria-describedby="description" role="grid" class="itemlist" role="application">
@@ -20,7 +21,7 @@
 							<a id="rec1" class="item_name" aria-label="Receipient 1" tabindex="-1" href="#">Receipient 1</a> 
 						</span>
 						<span role="gridcell" class="gc" tabindex="-1">
-							<span id="rb1" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb1 rec1" onclick='removeReceipients();'>x</span>
+							<span id="rb1" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb1 rec1" onclick='removeReceipients();' onkeydown="removeReceipientsOnKey();">x</span>
 						</span> 
 					</div>
 					<div role="row" class="item">
@@ -28,7 +29,7 @@
 							<a id="rec2" class="item_name" aria-label="Receipient 2" tabindex="-1" href="#">Receipient 2</a> 
 						</span>
 						<span role="gridcell" class="gc" tabindex="-1">
-							<span id="rb2" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb2 rec2" onclick='removeReceipients();'>x</span>
+							<span id="rb2" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb2 rec2" onclick='removeReceipients();' onkeydown="removeReceipientsOnKey();">x</span>
 						</span> 
 					</div>
 				</div><br/>
