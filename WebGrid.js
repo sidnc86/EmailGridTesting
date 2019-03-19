@@ -2,12 +2,13 @@ function gridNavigation()
 {
 	$(document).ready(function()
 	{
-		$(".gc").keydown(function(e)
-		{
-			var tr,td,cell;
+		var tr,td,cell;
 			td=$(".gc").length;
 			tr=$(".item").length;
 			cell=td/(tr-1);//one tr have that much of td
+		$(".gc").keydown(function(e)
+		{
+			
 			//alert(cell);
 			switch(e.keyCode)
 			{
