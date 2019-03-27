@@ -86,7 +86,8 @@ $(document).ready(function()
 										"<a id='"+txt_recp+"' class='item_name' aria-label='"+txt_recp+"' tabindex='-1' href='#'>"+txt_recp+"</a>"+
 									"</span>"+
 									"<span role='gridcell' class='gc' tabindex='-1'>"+
-										"<span id='"+idBtn+"' class='rmv' tabindex='-1' role='button' aria-label='Remove' aria-labelledby='"+idBtn+"'>x</span>"+
+										"<span class='rmv' tabindex='-1' role='button' aria-labelledby='"+idBtn+" "+txt_recp+"'>" + "<span id='"+idBtn+"' aria-label='Remove '>x</span>"+
+"</span>"+
 									"</span>"+ 
 								"</div>");
 								$("#form-action-text").text(txt_recp);
