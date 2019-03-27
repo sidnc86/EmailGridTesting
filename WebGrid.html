@@ -20,16 +20,16 @@
 						<span role="gridcell" class="gc" tabindex="0">
 							<a id="rec1" class="item_name" aria-label="Receipient 1" tabindex="-1" href="#">Receipient 1</a> 
 						</span>
-						<span role="gridcell" class="gc" tabindex="-1">
-							<span id="rb1" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb1 rec1" onclick='removeReceipients();' onkeydown="removeReceipientsOnKey();">x</span>
+						<span role="gridcell" class="gc rmvgc" tabindex="-1" onkeydown="removeReceipientsOnKey();">
+							<span id="rb1" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb1 rec1" onclick="removeReceipients();" >x</span>
 						</span> 
 					</div>
 					<div role="row" class="item">
 						<span role="gridcell" class="gc" tabindex="-1">
 							<a id="rec2" class="item_name" aria-label="Receipient 2" tabindex="-1" href="#">Receipient 2</a> 
 						</span>
-						<span role="gridcell" class="gc" tabindex="-1">
-							<span id="rb2" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb2 rec2" onclick='removeReceipients();' onkeydown="removeReceipientsOnKey();">x</span>
+						<span role="gridcell" class="gc rmvgc" tabindex="-1" onkeydown="removeReceipientsOnKey();">
+							<span id="rb2" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb2 rec2" onclick="removeReceipients();">x</span>
 						</span> 
 					</div>
 				</div><br/>
@@ -37,7 +37,10 @@
 					<input type="text" id="txt_add_recp" class="txt" aria-label="Add New Receipient" placeholder="New receipient Name">	
 					<button type="button" id="btn_add" aria-label="Add Recepient">Add</button>
 					<div class="accessible_elem" role="region" aria-label="Change alert" aria-live="assertive" aria-atomic="true" aria-relevent="text"	>
-						Last change to recipient list:
+						Last change to recipient list, 
+						<span id="form-action-text"></span>
+					</div>
+					<div class="accessible_elem" id="changeRemove" role="region" aria-label="Change alert" aria-live="assertive" aria-atomic="true" aria-relevent="text">
 						<span id="form-action-text"></span>
 					</div>
 				</div>

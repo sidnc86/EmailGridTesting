@@ -8,7 +8,6 @@ function gridNavigation()
 			cell=td/(tr-1);//one tr have that much of td
 		$(".gc").keydown(function(e)
 		{
-			
 			//alert(cell);
 			switch(e.keyCode)
 			{
@@ -48,12 +47,12 @@ function gridNavigation()
 						else
 							$(this).prev("span").focus();break;
 								/*var parent_cell = $(this).index();
-							  $(this).parent().prev().children("span").eq(parent_cell).focus();break;//up arrow		*/  
+							  $(this).parent().prev().children("span").eq(parent_cell).focus();break;//up arrow		*/   
 			}	
-			if(e.keyCode == 113)
+			/*if(e.keyCode == 113)
 			{
 				$(this).children().focus();
-			}
+			}*/
 		});
 	
 		$(".gc").focusin(function()
@@ -63,29 +62,55 @@ function gridNavigation()
 		$(".gc").focusout(function()
 		{
 			$(this).css("outline","none");
-		});			
+		});		
+		
+		$(".item").each(function(i)
+		{
+			$(this).attr("data-row-index",i);
+		});
 	});
 }
 
 function removeReceipients()
 {
-	$(".rmv").on("click", function()
+	$(".rmvgc, .rmv").on("click", function()
 	{
-		$(this).parent().parent().remove();
+		//var index = $(this).parent(".item").index();
+		//alert(index);
+		$(this).parent(".item").remove();
+		$(".itemlist").children(".item").eq(0).children().eq(1).focus();
+		var uname = $(this).parent(".item").find("a").text();
+					 $("#changeRemove").text(uname+" Removed from list");
 		appendItem();
 		makeFirstFocusable();
 	});
+	
 }
 function removeReceipientsOnKey()
 {
-	$(".rmv").keydown(function(e)
+	$(".rmvgc").on("keydown", function(evt)
 	{
-		if(e.keyCode == 13)
+		//var index = $(this).parent(".item").index();
+		//alert(index);
+		switch(evt.keyCode)
 		{
-			$(this).parent().parent().remove();
-			appendItem();
-			makeFirstFocusable();
+			case 13 :$(this).parent(".item").remove();
+					 $(".itemlist").children(".item").eq(0).children().eq(1).focus();
+					 var uname = $(this).parent(".item").find("a").text();
+					 $("#changeRemove").text(uname+" Removed from list");
+					 if( $(".itemlist").children(".item").length === 0 )
+					 {
+					 	$("#changeRemove").text("No receipient available to remove now!");
+					 }
+					 else
+					 {
+					 	var uname = $(this).parent(".item").find("a").text();
+						 $("#changeRemove").text(uname+" Removed from list");
+					 }
+					 break;
 		}
+		appendItem();
+		makeFirstFocusable();
 	});
 }
 
@@ -93,6 +118,7 @@ $(document).ready(function()
 {
 	appendItem();
 	gridNavigation();
+	removeReceipientsOnKey();
 	//selects the item from nux list
 	$(".user_name").click(function()
 	{
@@ -106,5 +132,6 @@ $(document).ready(function()
 		$(".hidden").css("display","none");
 	});
 });
+
 
 
